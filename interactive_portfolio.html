@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Om Gajanan Mane | Data &amp; BI Analyst &bull; Operations Specialist</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              950: '#060a11',
+              900: '#0c1220',
+              850: '#11192b',
+              800: '#1e293b',
+              700: '#334155',
+              cyan: '#06b6d4',
+              teal: '#14b8a6',
+              blue: '#3b82f6',
+              indigo: '#6366f1',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              rose: '#f43f5e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Sleek Scrollbar */
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: #060a11; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+
+    .glow-cyan { box-shadow: 0 0 35px -8px rgba(6, 182, 212, 0.28); }
+    .glass-panel {
+      background: rgba(12, 18, 32, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .grid-bg {
+      background-image: radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+    .badge-shimmer {
+      background: linear-gradient(90deg, rgba(6,182,212,0.1) 0%, rgba(99,102,241,0.2) 50%, rgba(6,182,212,0.1) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 4s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+  </style>
+</head>
+<body class="bg-brand-950 text-slate-100 font-sans selection:bg-brand-cyan selection:text-slate-950 antialiased relative min-h-screen">
+
+  <!-- Background decorative grid -->
+  <div class="fixed inset-0 grid-bg pointer-events-none z-0 opacity-80"></div>
+  <div class="fixed top-0 left-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-1/4 right-10 w-96 h-96 bg-brand-indigo/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Global Floating Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-28 opacity-0 transition-all duration-300 glass-panel border border-brand-cyan/60 text-slate-100 px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3">
+    <div class="p-1 rounded-full bg-brand-cyan/20 text-brand-cyan">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <span id="toast-message" class="text-xs sm:text-sm font-medium">Notification triggered</span>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-brand-800/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-indigo via-brand-cyan to-brand-emerald flex items-center justify-center font-black text-slate-950 text-xl tracking-tighter shadow-lg shadow-brand-cyan/20 group-hover:scale-105 transition-transform">
+          OM
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-lg text-white tracking-tight">Om Gajanan Mane</span>
+            <span class="w-2 h-2 rounded-full bg-brand-emerald animate-pulse"></span>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono tracking-wider">Data Analyst &bull; BI Specialist &bull; Operations</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-brand-cyan transition-colors">About</a>
+        <a href="#roles" class="hover:text-brand-cyan transition-colors">Target Roles</a>
+        <a href="#bi-dashboards" class="hover:text-brand-cyan transition-colors">BI Dashboards</a>
+        <a href="#analytics-studio" class="hover:text-brand-cyan transition-colors">Analytics Studio</a>
+        <a href="#projects" class="hover:text-brand-cyan transition-colors">Projects</a>
+        <a href="#skills" class="hover:text-brand-cyan transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-brand-cyan transition-colors">Experience</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="downloadResume()" class="flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-xl bg-brand-800 hover:bg-brand-700 text-slate-200 border border-brand-700 transition-all hover:scale-[1.02]">
+          <i data-lucide="file-text" class="w-4 h-4 text-brand-cyan"></i>
+          <span>Resume Preview</span>
+        </button>
+        <a href="#contact" class="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-brand-cyan to-brand-indigo text-slate-950 hover:brightness-110 shadow-lg shadow-brand-cyan/20 transition-all hover:scale-[1.02]">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>Hire Om</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-toggle-btn" class="lg:hidden p-2 text-slate-400 hover:text-white" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden px-5 pt-3 pb-6 bg-brand-900 border-b border-brand-800 space-y-3">
+      <a href="#about" class="block py-2 text-sm text-slate-300 hover:text-brand-cyan">About</a>
+      <a href="#roles" class="block py-2 text-sm text-slate-300 hover:text-brand-cyan">Role Focus</a>
+      <a href="#bi-dashboards" class="block py-2 text-sm text-slate-300 hover:text-brand-cyan">BI Dashboards</a>
+      <a href="#analytics-studio" class="block py-2 text-sm text-slate-300 hover:text-brand-cyan">Analytics Studio</a>
+      <a href="#projects" class="block py-2 text-sm text-slate-300 hover:text-brand-cyan">Projects</a>
+      <a href="#skills" class="block py-2 text-sm text-slate-300 hover:text-brand-cyan">Skills Matrix</a>
+      <a href="#experience" class="block py-2 text-sm text-slate-300 hover:text-brand-cyan">Experience</a>
+      <a href="#contact" class="block py-2 text-sm text-slate-300 hover:text-brand-cyan">Contact</a>
+      <div class="pt-2 flex gap-2">
+        <button onclick="downloadResume()" class="flex-1 py-2 text-xs font-semibold rounded-lg bg-brand-800 text-slate-200 border border-brand-700">
+          Resume
+        </button>
+        <a href="#contact" class="flex-1 text-center py-2 text-xs font-bold rounded-lg bg-brand-cyan text-slate-950">
+          Hire Om
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-24">
+
+    <!-- HERO SECTION -->
+    <section id="about" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Interactive Recruiter Headline Switcher -->
+      <div class="mb-8 p-2 rounded-2xl glass-panel border border-brand-800 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-2">
+        <span class="text-xs font-mono text-slate-400 px-3 py-1 flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-cyan"></i> View Portfolio As:
+        </span>
+        <button onclick="setHeroPerspective('bi_analyst')" id="hero-btn-bi" class="hero-focus-pill px-3 py-1.5 text-xs font-semibold rounded-xl bg-brand-cyan text-slate-950 shadow-md transition-all">
+          BI &amp; Power BI Analyst
+        </button>
+        <button onclick="setHeroPerspective('data_analyst')" id="hero-btn-data" class="hero-focus-pill px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-xl hover:bg-brand-800 transition-all">
+          SQL &amp; Python Data Analyst
+        </button>
+        <button onclick="setHeroPerspective('operations')" id="hero-btn-ops" class="hero-focus-pill px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-xl hover:bg-brand-800 transition-all">
+          Operations &amp; Quality Analyst
+        </button>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Core Hook & Headlines -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-shimmer border border-brand-cyan/40 text-brand-cyan text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-brand-emerald animate-ping"></span>
+            <span id="hero-badge-text">Immediate Availability &bull; Pune / Hybrid Ready</span>
+          </div>
+
+          <!-- Dynamic Headline -->
+          <h1 id="hero-main-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+            Transforming Complex Enterprise Data into <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-teal-300 to-brand-indigo">High-Impact BI Dashboards</span>.
+          </h1>
+
+          <!-- Dynamic Sub-headline / Intro Paragraph -->
+          <div id="hero-intro-text" class="text-base sm:text-lg text-slate-300 leading-relaxed space-y-2">
+            <p>
+              Electronics &amp; Telecommunication graduate (<strong class="text-white">SPPU &bull; 7.71 CGPA</strong>) with plant-floor data leadership and analytics experience at a <span class="text-brand-cyan font-semibold">Tier-1 Electronics Manufacturing (EMS) Plant</span>.
+            </p>
+            <p class="text-sm text-slate-400">
+              Specialized in engineering <strong class="text-slate-200">Power BI dashboards</strong>, DAX modeling, SQL Star Schemas, and Statistical Process Control (SPC) engines that uncover hidden margin leaks, accelerate yield, and optimize floor operations.
+            </p>
+          </div>
+
+          <!-- Quick Skill Tags -->
+          <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+            <span class="px-3 py-1 rounded-lg bg-brand-900 border border-brand-800 text-brand-cyan">Power BI &amp; DAX</span>
+            <span class="px-3 py-1 rounded-lg bg-brand-900 border border-brand-800 text-teal-300">SQL &amp; Star Schema</span>
+            <span class="px-3 py-1 rounded-lg bg-brand-900 border border-brand-800 text-brand-indigo">Tableau &amp; Python Analytics</span>
+            <span class="px-3 py-1 rounded-lg bg-brand-900 border border-brand-800 text-amber-300">SAP PP &amp; MRP Tracking</span>
+            <span class="px-3 py-1 rounded-lg bg-brand-900 border border-brand-800 text-emerald-300">SPC 3-Sigma Control</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap gap-4 pt-3">
+            <a href="#bi-dashboards" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-indigo text-slate-950 font-bold hover:shadow-xl hover:shadow-brand-cyan/20 transition-all flex items-center gap-2 text-sm">
+              <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Explore BI Dashboards
+            </a>
+            <a href="#projects" class="px-6 py-3.5 rounded-xl bg-brand-900 hover:bg-brand-800 border border-brand-700 text-slate-200 font-semibold transition-all flex items-center gap-2 text-sm">
+              <i data-lucide="folder-git-2" class="w-4 h-4 text-brand-cyan"></i> View All Projects
+            </a>
+          </div>
+
+          <!-- Quick Contact Strip -->
+          <div class="pt-3 flex flex-wrap items-center gap-6 text-xs text-slate-400">
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-brand-cyan"></i>
+              <span>Pune, Maharashtra, India</span>
+            </div>
+            <button onclick="copyToClipboard('+917758802790', 'Phone')" class="flex items-center gap-1.5 hover:text-white transition-colors">
+              <i data-lucide="phone" class="w-4 h-4 text-brand-emerald"></i>
+              <span>+91 7758802790</span>
+            </button>
+            <button onclick="copyToClipboard('ommane75@gmail.com', 'Email')" class="flex items-center gap-1.5 hover:text-white transition-colors">
+              <i data-lucide="mail" class="w-4 h-4 text-brand-indigo"></i>
+              <span>ommane75@gmail.com</span>
+            </button>
+            <a href="https://linkedin.com/in/omgmane" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-brand-cyan hover:underline">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+              <span>omgmane</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right: Executive Recruiter Quick Card -->
+        <div class="lg:col-span-5">
+          <div class="p-6 sm:p-7 rounded-3xl glass-panel border border-brand-800 glow-cyan relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-44 h-44 bg-brand-cyan/15 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center justify-between pb-4 border-b border-brand-800">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                <span class="text-xs font-mono text-slate-400 ml-2">om_bi_analyst.json</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                Verified Profile
+              </span>
+            </div>
+
+            <!-- Credentials Points -->
+            <div class="mt-5 space-y-3.5 text-xs">
+              <div class="p-3.5 rounded-2xl bg-brand-900/90 border border-brand-800">
+                <span class="text-[10px] font-mono text-brand-cyan uppercase tracking-wider block">Enterprise Leadership &bull; Tier-1 EMS Plant</span>
+                <p class="text-white font-semibold text-sm mt-0.5">Manufacturing Line Leader &bull; Assembly &amp; Analytics</p>
+                <p class="text-slate-300 mt-1 leading-relaxed">
+                  Led assembly line continuity, SAP PP work order management, daily MRP tracking, and wiped out pending &gt;30-day aged WIP down to zero.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-brand-900/90 border border-brand-800">
+                <span class="text-[10px] font-mono text-brand-indigo uppercase tracking-wider block">BI Architecture &amp; DAX Modeling</span>
+                <p class="text-white font-semibold text-sm mt-0.5">Power BI &bull; Tableau &bull; Star Schema &bull; SQL</p>
+                <p class="text-slate-300 mt-1 leading-relaxed">
+                  Constructing robust star schemas, dynamic DAX measures (`CALCULATE`, `SUMX`, `DATEDIFF`), customer RFM models, and executive KPI portals.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-brand-900/90 border border-brand-800">
+                <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider block">Quality &amp; Technical Problem Solving</span>
+                <p class="text-white font-semibold text-sm mt-0.5">Statistical Process Control &amp; Root Cause Analysis</p>
+                <p class="text-slate-300 mt-1 leading-relaxed">
+                  5-Why &amp; Ishikawa Fishbone diagrams, SMT line defect Pareto 80/20, Zebra printer and MES terminal technical troubleshooting.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-brand-800 flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>Degree: <strong class="text-slate-200">B.E. E&amp;TC (7.71)</strong></span>
+              <span>Diploma: <strong class="text-slate-200">83.14%</strong></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TARGET ROLES BREAKDOWN -->
+    <section id="roles" class="py-16 bg-brand-900/40 border-y border-brand-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Candidate Positioning</p>
+          <h2 class="text-3xl font-extrabold text-white mt-1">Core Roles I Am Prepared to Drive</h2>
+          <p class="text-slate-400 text-sm mt-2">Equipped with verifiable data modeling, live visual dashboards, and plant-floor discipline.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Role 1: BI Analyst -->
+          <div class="p-6 rounded-2xl bg-brand-850 border border-brand-800 hover:border-brand-cyan/60 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">Business Intelligence</span>
+              <h3 class="text-xl font-bold text-white mt-2">Power BI &amp; Business Intelligence Analyst</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Transforming disparate ERP and transactional databases into live visual decision cockpits with complex DAX calculations, Star Schema modeling, and row-level security.
+              </p>
+
+              <div class="mt-4 space-y-2 text-xs text-slate-400">
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-cyan"></i> Power BI, Tableau &amp; Interactive Executive Dashboards</div>
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-cyan"></i> Advanced DAX: Time Intelligence, FILTER, CALCULATE, SUMX</div>
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-cyan"></i> Automated Power Query ETL and data refresh gateways</div>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-brand-800/80">
+              <span class="text-[11px] font-mono text-slate-400">Core Assets: <strong>Operations BI, Retail BI, Defect Analytics</strong></span>
+            </div>
+          </div>
+
+          <!-- Role 2: Data Analyst -->
+          <div class="p-6 rounded-2xl bg-brand-850 border border-brand-800 hover:border-brand-indigo/60 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 text-brand-indigo flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i data-lucide="database" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-brand-indigo/15 text-brand-indigo border border-brand-indigo/30">Data &amp; Code</span>
+              <h3 class="text-xl font-bold text-white mt-2">Data Analyst (SQL &bull; Python &bull; Excel)</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Uncovering actionable patterns from high-volume datasets using relational SQL joins, window functions (`ROW_NUMBER`, `RANK`), Python Pandas/NumPy pipelines, and RFM clustering.
+              </p>
+
+              <div class="mt-4 space-y-2 text-xs text-slate-400">
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-indigo"></i> Advanced SQL subqueries, CTEs, and star-schema indexing</div>
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-indigo"></i> Python exploratory data analysis (Pandas, Matplotlib, Seaborn)</div>
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-indigo"></i> Advanced Excel (Power Pivot, XLOOKUP, Dynamic Arrays)</div>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-brand-800/80">
+              <span class="text-[11px] font-mono text-slate-400">Core Assets: <strong>Sales Analytics, Deep Learning Vision Model</strong></span>
+            </div>
+          </div>
+
+          <!-- Role 3: Operations & Quality Analyst -->
+          <div class="p-6 rounded-2xl bg-brand-850 border border-brand-800 hover:border-brand-emerald/60 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i data-lucide="factory" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-brand-emerald/15 text-brand-emerald border border-brand-emerald/30">Plant Execution &amp; SCM</span>
+              <h3 class="text-xl font-bold text-white mt-2">Operations &amp; Quality Analyst</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Direct shop-floor experience running daily Material Requirements Planning (MRP), SAP PP production order tracking, line starvation prevention, and reducing WIP aging.
+              </p>
+
+              <div class="mt-4 space-y-2 text-xs text-slate-400">
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-emerald"></i> SAP PP module &amp; planning master data integrity audits</div>
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-emerald"></i> Statistical Process Control (SPC) &amp; 3-sigma defect run charts</div>
+                <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-emerald"></i> 5-Why, Ishikawa Fishbone RCA &amp; Zero aged WIP delivery</div>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-brand-800/80">
+              <span class="text-[11px] font-mono text-slate-400">Core Assets: <strong>Yield &amp; OEE Cockpit, MRB Aging Tool</strong></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- NEW SECTION: BUSINESS INTELLIGENCE (BI) DASHBOARDS & ANALYTICS SHOWCASE -->
+    <section id="bi-dashboards" class="py-20 bg-brand-900/50 border-y border-brand-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/15 text-brand-cyan text-xs font-mono mb-2 border border-brand-cyan/30">
+            <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i> Power BI &bull; Tableau &bull; SQL Star Schemas
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Business Intelligence (BI) Dashboards &amp; Projects</h2>
+          <p class="text-slate-400 text-sm mt-2">
+            Interactive enterprise BI systems engineered with production-grade data modeling, dynamic DAX measures, star schema architectures, and executive KPI drill-downs.
+          </p>
+        </div>
+
+        <!-- 3 Interactive BI Dashboard Cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+          
+          <!-- BI Card 1: Executive Operations & Supply Chain BI Dashboard -->
+          <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-cyan/60 transition-all flex flex-col justify-between group shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-cyan/5 rounded-full blur-2xl pointer-events-none"></div>
+            <div>
+              <!-- Header Badges -->
+              <div class="flex items-center justify-between pb-3 border-b border-brand-800/70">
+                <span class="text-[11px] font-mono px-2.5 py-0.5 rounded bg-brand-cyan/15 text-brand-cyan font-bold tracking-wide border border-brand-cyan/30">
+                  POWER BI &bull; SAP PP DATA
+                </span>
+                <span class="text-xs text-slate-400 font-mono">Operations BI</span>
+              </div>
+
+              <!-- Title & Intro -->
+              <div class="my-4">
+                <div class="w-11 h-11 rounded-2xl bg-brand-cyan/15 text-brand-cyan flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="cpu" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white group-hover:text-brand-cyan transition-colors">
+                  Executive Operations &amp; Supply Chain BI Dashboard
+                </h3>
+                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                  Consolidates daily shop-floor assembly logs, SAP PP work order confirmations, and Material Requirements Planning (MRP) outputs into real-time operational metrics.
+                </p>
+              </div>
+
+              <!-- Live KPI Strip -->
+              <div class="grid grid-cols-3 gap-2 my-3">
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">OEE Index</span>
+                  <span class="text-sm font-bold text-white font-mono">87.4%</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">OTIF Rate</span>
+                  <span class="text-sm font-bold text-brand-emerald font-mono">96.8%</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">>30d Aged WIP</span>
+                  <span class="text-sm font-bold text-brand-cyan font-mono">0 Units</span>
+                </div>
+              </div>
+
+              <!-- DAX Formula Preview Box -->
+              <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 font-mono text-[11px] space-y-1">
+                <div class="flex items-center justify-between text-slate-400 text-[10px]">
+                  <span>CORE DAX MEASURE:</span>
+                  <span class="text-brand-cyan">Time Intelligence</span>
+                </div>
+                <code class="text-brand-cyan block overflow-x-auto whitespace-pre text-[10px]">OTIF_Rate = DIVIDE(
+  CALCULATE(COUNTROWS(Fact_Shipments),
+    Fact_Shipments[OnTime] = 1 &amp;&amp; Fact_Shipments[InFull] = 1),
+  COUNTROWS(Fact_Shipments), 0
+)</code>
+              </div>
+
+              <!-- Slicers Simulation -->
+              <div class="mt-3 flex items-center justify-between text-xs text-slate-400 font-mono">
+                <span>Model: <strong>Star Schema (3 Dim, 1 Fact)</strong></span>
+                <span class="text-brand-emerald flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald"></span> Auto-Refreshed
+                </span>
+              </div>
+            </div>
+
+            <!-- Footer Action -->
+            <div class="mt-5 pt-3 border-t border-brand-800/80 flex items-center justify-between">
+              <span class="text-[11px] font-mono text-slate-400">Tool: <strong>Power BI Desktop / Gateway</strong></span>
+              <button onclick="openBiModal('ops-bi')" class="px-3 py-1.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-cyan text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Launch Dashboard
+              </button>
+            </div>
+          </div>
+
+          <!-- BI Card 2: Multi-Channel Retail Sales & Customer Cohort BI Dashboard -->
+          <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-indigo/60 transition-all flex flex-col justify-between group shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-indigo/5 rounded-full blur-2xl pointer-events-none"></div>
+            <div>
+              <!-- Header Badges -->
+              <div class="flex items-center justify-between pb-3 border-b border-brand-800/70">
+                <span class="text-[11px] font-mono px-2.5 py-0.5 rounded bg-brand-indigo/15 text-brand-indigo font-bold tracking-wide border border-brand-indigo/30">
+                  POWER BI &bull; SQL &bull; RFM
+                </span>
+                <span class="text-xs text-slate-400 font-mono">Commercial BI</span>
+              </div>
+
+              <!-- Title & Intro -->
+              <div class="my-4">
+                <div class="w-11 h-11 rounded-2xl bg-brand-indigo/15 text-brand-indigo flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="trending-up" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white group-hover:text-brand-indigo transition-colors">
+                  Multi-Channel Retail Sales &amp; Customer Cohort Dashboard
+                </h3>
+                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                  End-to-end commercial intelligence dashboard analyzing product gross margins, regional distributor sell-through, basket sizes, and customer churn segmentation.
+                </p>
+              </div>
+
+              <!-- Live KPI Strip -->
+              <div class="grid grid-cols-3 gap-2 my-3">
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">Gross Margin</span>
+                  <span class="text-sm font-bold text-white font-mono">31.8%</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">MoM Growth</span>
+                  <span class="text-sm font-bold text-brand-cyan font-mono">+12.4%</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">Retention</span>
+                  <span class="text-sm font-bold text-brand-indigo font-mono">91.2%</span>
+                </div>
+              </div>
+
+              <!-- DAX Formula Preview Box -->
+              <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 font-mono text-[11px] space-y-1">
+                <div class="flex items-center justify-between text-slate-400 text-[10px]">
+                  <span>CORE DAX MEASURE:</span>
+                  <span class="text-brand-indigo">Cohort Analysis</span>
+                </div>
+                <code class="text-brand-indigo block overflow-x-auto whitespace-pre text-[10px]">Customer_LTV = SUMX(
+  VALUES(Dim_Customer[CustomerKey]),
+  CALCULATE([Total_Revenue] - [Total_COGS])
+)</code>
+              </div>
+
+              <!-- Slicers Simulation -->
+              <div class="mt-3 flex items-center justify-between text-xs text-slate-400 font-mono">
+                <span>Model: <strong>Star Schema (Snowflaked Geo)</strong></span>
+                <span class="text-brand-indigo flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-indigo"></span> Dynamic Slicers
+                </span>
+              </div>
+            </div>
+
+            <!-- Footer Action -->
+            <div class="mt-5 pt-3 border-t border-brand-800/80 flex items-center justify-between">
+              <span class="text-[11px] font-mono text-slate-400">Tool: <strong>Power BI &bull; DAX &bull; SQL Server</strong></span>
+              <button onclick="openBiModal('sales-bi')" class="px-3 py-1.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-indigo text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Launch Dashboard
+              </button>
+            </div>
+          </div>
+
+          <!-- BI Card 3: Quality Engineering & SPC Defect Analytics Dashboard -->
+          <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-emerald/60 transition-all flex flex-col justify-between group shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-emerald/5 rounded-full blur-2xl pointer-events-none"></div>
+            <div>
+              <!-- Header Badges -->
+              <div class="flex items-center justify-between pb-3 border-b border-brand-800/70">
+                <span class="text-[11px] font-mono px-2.5 py-0.5 rounded bg-brand-emerald/15 text-brand-emerald font-bold tracking-wide border border-brand-emerald/30">
+                  TABLEAU &bull; PYTHON &bull; SPC
+                </span>
+                <span class="text-xs text-slate-400 font-mono">Quality BI</span>
+              </div>
+
+              <!-- Title & Intro -->
+              <div class="my-4">
+                <div class="w-11 h-11 rounded-2xl bg-brand-emerald/15 text-brand-emerald flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="activity" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white group-hover:text-brand-emerald transition-colors">
+                  Quality Engineering &amp; SPC Defect Analytics Dashboard
+                </h3>
+                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                  Statistical Process Control dashboard visualizing SMT printed circuit board assembly defects, Pareto 80/20 distribution, 3-sigma UCL/LCL control bands, and shift-wise drilldowns.
+                </p>
+              </div>
+
+              <!-- Live KPI Strip -->
+              <div class="grid grid-cols-3 gap-2 my-3">
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">First Pass Yield</span>
+                  <span class="text-sm font-bold text-white font-mono">98.6%</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">Scrap Reduced</span>
+                  <span class="text-sm font-bold text-brand-emerald font-mono">-18.2%</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-brand-950 border border-brand-800 text-center">
+                  <span class="text-[10px] text-slate-400 block font-mono">UCL Outliers</span>
+                  <span class="text-sm font-bold text-brand-cyan font-mono">0 Flags</span>
+                </div>
+              </div>
+
+              <!-- Formula Preview Box -->
+              <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 font-mono text-[11px] space-y-1">
+                <div class="flex items-center justify-between text-slate-400 text-[10px]">
+                  <span>STATISTICAL CONTROL:</span>
+                  <span class="text-brand-emerald">3-Sigma Limits</span>
+                </div>
+                <code class="text-brand-emerald block overflow-x-auto whitespace-pre text-[10px]">UCL = p_bar + 3 * SQRT((p_bar * (1 - p_bar)) / n_sample)
+LCL = MAX(0, p_bar - 3 * SQRT((p_bar * (1 - p_bar)) / n_sample))</code>
+              </div>
+
+              <!-- Slicers Simulation -->
+              <div class="mt-3 flex items-center justify-between text-xs text-slate-400 font-mono">
+                <span>Data Flow: <strong>Automated Python ETL &rarr; Tableau</strong></span>
+                <span class="text-brand-emerald flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald"></span> 5-Why Linked
+                </span>
+              </div>
+            </div>
+
+            <!-- Footer Action -->
+            <div class="mt-5 pt-3 border-t border-brand-800/80 flex items-center justify-between">
+              <span class="text-[11px] font-mono text-slate-400">Tool: <strong>Tableau / Python Pandas / SciPy</strong></span>
+              <button onclick="openBiModal('quality-bi')" class="px-3 py-1.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-emerald text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Launch Dashboard
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LIVE ANALYTICS STUDIO COCKPIT -->
+    <section id="analytics-studio" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan text-xs font-mono mb-2">
+            <i data-lucide="activity" class="w-3.5 h-3.5"></i> Enterprise Analytics Intelligence Studio
+          </div>
+          <h2 class="text-3xl font-extrabold text-white">Interactive Production &amp; Yield Telemetry</h2>
+          <p class="text-slate-400 text-sm mt-1 max-w-2xl">
+            Live multi-metric analytics reflecting Om's real-world analytical methods: SMT Defect SPC limits, regional sales velocity, and Overall Equipment Effectiveness (OEE).
+          </p>
+        </div>
+
+        <!-- Mode Switcher -->
+        <div class="flex flex-wrap p-1.5 rounded-2xl bg-brand-850 border border-brand-800">
+          <button id="btn-mode-defect" onclick="switchAnalyticsMode('defect')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-brand-cyan text-slate-950 transition-all">
+            SMT Defect SPC &amp; Pareto
+          </button>
+          <button id="btn-mode-sales" onclick="switchAnalyticsMode('sales')" class="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-300 hover:text-white transition-all">
+            Sales &amp; Revenue Trends
+          </button>
+          <button id="btn-mode-oee" onclick="switchAnalyticsMode('oee')" class="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-300 hover:text-white transition-all">
+            Line OEE &amp; Availability
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Cockpit Box -->
+      <div class="p-6 sm:p-8 rounded-3xl glass-panel border border-brand-800 shadow-2xl">
+        
+        <!-- Live KPI Strip -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div class="p-4 rounded-2xl bg-brand-900/90 border border-brand-800">
+            <span class="text-xs font-mono text-slate-400" id="card-label-1">SMT First Pass Yield</span>
+            <p class="text-2xl font-black text-white mt-1" id="card-val-1">98.62%</p>
+            <span class="text-[11px] text-brand-emerald flex items-center gap-1 mt-0.5" id="card-sub-1">
+              <i data-lucide="arrow-up-right" class="w-3 h-3"></i> +1.8% vs Shift Target
+            </span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-brand-900/90 border border-brand-800">
+            <span class="text-xs font-mono text-slate-400" id="card-label-2">Defect Outliers</span>
+            <p class="text-2xl font-black text-emerald-400 mt-1" id="card-val-2">0 UCL Violations</p>
+            <span class="text-[11px] text-slate-400" id="card-sub-2">Within 3σ Upper Limit</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-brand-900/90 border border-brand-800">
+            <span class="text-xs font-mono text-slate-400" id="card-label-3">Scrap Reduction</span>
+            <p class="text-2xl font-black text-brand-cyan mt-1" id="card-val-3">18.2% Cut</p>
+            <span class="text-[11px] text-brand-cyan" id="card-sub-3">5-Why Feeder Optimization</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-brand-900/90 border border-brand-800">
+            <span class="text-xs font-mono text-slate-400" id="card-label-4">WIP Status (&gt;30d)</span>
+            <p class="text-2xl font-black text-brand-indigo mt-1" id="card-val-4">0 Units</p>
+            <span class="text-[11px] text-brand-indigo" id="card-sub-4">Clean Inventory Health</span>
+          </div>
+        </div>
+
+        <!-- Chart Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+          
+          <!-- Chart Visual Container -->
+          <div class="lg:col-span-2 h-72 sm:h-96 relative">
+            <canvas id="liveInteractiveChart"></canvas>
+          </div>
+
+          <!-- Side Interactive Query / Tuning Box -->
+          <div class="h-72 sm:h-96 bg-brand-900/80 rounded-2xl border border-brand-800 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-brand-800">
+                <span class="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                  <i data-lucide="code-2" class="w-4 h-4 text-brand-cyan"></i> Live SQL &amp; Math Engine
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan" id="query-engine-badge">PostgreSQL / SPC</span>
+              </div>
+
+              <!-- Interactive Controls for simulation -->
+              <div class="mt-4 space-y-4 text-xs">
+                <div>
+                  <div class="flex justify-between text-slate-300 mb-1">
+                    <span id="slider-label">Production Lot Sample Size:</span>
+                    <span id="slider-val" class="font-mono text-brand-cyan">1,200 Boards</span>
+                  </div>
+                  <input type="range" id="paramSlider" min="600" max="3000" step="100" value="1200" oninput="handleSliderChange(this.value)" class="w-full accent-brand-cyan cursor-pointer">
+                </div>
+
+                <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 space-y-1 font-mono text-[11px]">
+                  <p class="text-slate-400" id="query-desc">-- SMT Failure Rate Calculation:</p>
+                  <code class="text-brand-cyan block overflow-x-auto whitespace-pre text-[10.5px]" id="code-snippet-box">SELECT defect_type, COUNT(*) AS count,
+       ROUND(COUNT(*)*100.0/SUM(COUNT(*)) OVER(), 2) AS pareto_pct
+FROM smt_line_inspections
+WHERE shift_date = CURRENT_DATE
+GROUP BY defect_type
+ORDER BY count DESC;</code>
+                </div>
+
+                <div class="text-[11px] text-slate-300 leading-relaxed" id="interactive-explanation">
+                  Simulates electronics SMT line inspection results: isolates solder bridging, tombstoning, and component misalignments before finished PCB potting.
+                </div>
+              </div>
+            </div>
+
+            <!-- Action button -->
+            <button onclick="triggerSimulationAnomaly()" class="w-full py-2.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-xs font-semibold text-slate-200 border border-brand-700 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-brand-cyan"></i>
+              <span>Simulate Shift Spike &amp; Trigger RCA</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ALL 6 KEY PROJECTS -->
+    <section id="projects" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Applied Engineering &amp; Analytics</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Featured Development &amp; Analytics Projects</h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Demonstrating computer vision AI, multi-vendor frontend web applications, shop-floor defect analytics, IoT telemetry, and native mobile development.
+        </p>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        
+        <!-- Project 1: Blood Group Identification (Deep Learning) -->
+        <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-cyan/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-brand-800/60">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-rose-500/10 text-rose-400 border border-rose-500/30">
+                Deep Learning &amp; Computer Vision
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">AI Model</span>
+            </div>
+
+            <div class="my-4">
+              <div class="w-10 h-10 rounded-xl bg-rose-500/15 text-rose-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <i data-lucide="microscope" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-cyan transition-colors">
+                Blood Group Identification Using Deep Learning
+              </h3>
+              <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                Automated microscopic blood smear classification model to identify ABO blood groups &amp; Rh factors with <strong>92%+ accuracy</strong>, minimizing clinical typing clerical errors.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 text-xs space-y-1 text-slate-300">
+              <div><strong class="text-brand-cyan">Data:</strong> Microscopic agglutination slide image preprocessing.</div>
+              <div><strong class="text-brand-emerald">Architecture:</strong> CNN with OpenCV augmentation &amp; Dropout layers.</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-brand-800/80 flex items-center justify-between">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Python</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">TensorFlow</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">OpenCV</span>
+            </div>
+            <button onclick="openModal('blood-group')" class="text-xs font-semibold text-brand-cyan hover:underline flex items-center gap-1">
+              Deep Dive <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2: Sales Performance & Revenue Analytics -->
+        <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-cyan/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-brand-800/60">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30">
+                Business &amp; Revenue Analytics
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">BI Intelligence</span>
+            </div>
+
+            <div class="my-4">
+              <div class="w-10 h-10 rounded-xl bg-brand-cyan/15 text-brand-cyan flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-cyan transition-colors">
+                End-to-End Sales Performance &amp; Revenue Analytics
+              </h3>
+              <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                Multi-regional sales intelligence model analyzing churn, customer segmentation (RFM), gross margins, and seasonal demand forecasting using SQL and Power BI.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 text-xs space-y-1 text-slate-300">
+              <div><strong class="text-brand-cyan">Modeling:</strong> RFM Segmentation &amp; Cohort Retention analysis.</div>
+              <div><strong class="text-brand-emerald">Outcome:</strong> Identified 14% revenue leakage in distributor margins.</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-brand-800/80 flex items-center justify-between">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">SQL</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Power BI</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Advanced Excel</span>
+            </div>
+            <button onclick="openModal('sales-analytics')" class="text-xs font-semibold text-brand-cyan hover:underline flex items-center gap-1">
+              Deep Dive <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3: Shop-Floor Defect Trend & Line Yield Analytics -->
+        <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-emerald/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-brand-800/60">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-brand-emerald/10 text-brand-emerald border border-brand-emerald/30">
+                Plant Yield &amp; Quality SPC
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">EMS Operations</span>
+            </div>
+
+            <div class="my-4">
+              <div class="w-10 h-10 rounded-xl bg-brand-emerald/15 text-brand-emerald flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <i data-lucide="pie-chart" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-emerald transition-colors">
+                Shop-Floor Defect Trend &amp; Line Yield Analytics
+              </h3>
+              <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                Real-time defect tracking engine analyzing failure rates, shift-wise defect distribution, and Root Cause Analysis (5-Why &amp; Ishikawa), <strong>reducing scrap rework by 18%</strong>.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 text-xs space-y-1 text-slate-300">
+              <div><strong class="text-brand-cyan">Statistical Tool:</strong> 3-Sigma Upper Control Limits &amp; Pareto 80/20.</div>
+              <div><strong class="text-brand-emerald">Data Sync:</strong> Integrated with SAP PP order confirmation records.</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-brand-800/80 flex items-center justify-between">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Python</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">SPC Charts</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">SAP PP</span>
+            </div>
+            <button onclick="openModal('defect-analytics')" class="text-xs font-semibold text-brand-emerald hover:underline flex items-center gap-1">
+              Deep Dive <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 4: Smart Arduino Speed Monitoring & Telemetry Vehicle System -->
+        <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-amber-400/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-brand-800/60">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-amber-400/10 text-amber-400 border border-amber-400/30">
+                Embedded Systems &amp; IoT
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">Hardware Prototype</span>
+            </div>
+
+            <div class="my-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-400/15 text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <i data-lucide="gauge" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                Smart Arduino Speed Monitoring &amp; Telemetry Vehicle System
+              </h3>
+              <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                Microcontroller-driven automotive speed detection prototype using Hall-Effect sensors, interrupt timers, threshold buzzer triggers, and live serial telemetry logging.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 text-xs space-y-1 text-slate-300">
+              <div><strong class="text-amber-400">Sensors:</strong> Hall-Effect RPM pulse interrupts &amp; Ultrasonic sensor.</div>
+              <div><strong class="text-brand-emerald">Output:</strong> Real-time OLED display + audible safety threshold alarm.</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-brand-800/80 flex items-center justify-between">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Embedded C++</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Arduino IDE</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Serial I2C</span>
+            </div>
+            <button onclick="openModal('arduino-speed')" class="text-xs font-semibold text-amber-400 hover:underline flex items-center gap-1">
+              Deep Dive <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 5: Multi-Vendor Local Shop Showcase & Discovery Portal (Frontend Web App) -->
+        <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-indigo/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-brand-800/60">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-brand-indigo/10 text-brand-indigo border border-brand-indigo/30">
+                Full Frontend Web Application
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">Web App</span>
+            </div>
+
+            <div class="my-4">
+              <div class="w-10 h-10 rounded-xl bg-brand-indigo/15 text-brand-indigo flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <i data-lucide="store" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-indigo transition-colors">
+                Multi-Vendor Local Shop Showcase &amp; Discovery Portal
+              </h3>
+              <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                Responsive web application allowing local neighborhood merchants to showcase stores, display real-time inventory catalogues, filter by categories, and generate direct WhatsApp order inquiries.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 text-xs space-y-1 text-slate-300">
+              <div><strong class="text-brand-indigo">Architecture:</strong> HTML5, Tailwind CSS, JavaScript ES6+, JSON Store.</div>
+              <div><strong class="text-brand-emerald">Features:</strong> Instant category filtering &amp; direct WhatsApp checkout.</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-brand-800/80 flex items-center justify-between">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">HTML5</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Tailwind CSS</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">JavaScript</span>
+            </div>
+            <button onclick="openModal('shop-portal')" class="text-xs font-semibold text-brand-indigo hover:underline flex items-center gap-1">
+              Deep Dive <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 6: Smart Campus Notes & Task Organizer App (Mobile Android App) -->
+        <div class="p-6 rounded-3xl bg-brand-850 border border-brand-800 hover:border-teal-400/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-brand-800/60">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-teal-400/10 text-teal-400 border border-teal-400/30">
+                Native Android Mobile App
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">Mobile Utility</span>
+            </div>
+
+            <div class="my-4">
+              <div class="w-10 h-10 rounded-xl bg-teal-400/15 text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <i data-lucide="smartphone" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-teal-400 transition-colors">
+                Smart Campus Notes &amp; Task Organizer App
+              </h3>
+              <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                Native Android application designed for engineering students: offline SQLite storage for subject notes, timetable alarms, priority task checklist, and fast search filtering.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-brand-950 border border-brand-800 text-xs space-y-1 text-slate-300">
+              <div><strong class="text-teal-400">Stack:</strong> Java, Android Studio SDK, SQLite Database, XML UI.</div>
+              <div><strong class="text-brand-emerald">Storage:</strong> 100% offline persistence with zero latency.</div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-brand-800/80 flex items-center justify-between">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Java</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">Android Studio</span>
+              <span class="px-2 py-0.5 rounded bg-brand-900 text-slate-300">SQLite</span>
+            </div>
+            <button onclick="openModal('campus-app')" class="text-xs font-semibold text-teal-400 hover:underline flex items-center gap-1">
+              Deep Dive <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- COMPREHENSIVE SKILLS MATRIX -->
+    <section id="skills" class="py-20 bg-brand-900/60 border-y border-brand-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Analytical &amp; Technical Capabilities</span>
+          <h2 class="text-3xl font-extrabold text-white mt-1">Core Competency Matrix</h2>
+          <p class="text-slate-400 text-sm mt-2">Structured for direct evaluation by hiring managers across analytics, BI engineering, and operations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Category 1: Power BI & Business Intelligence -->
+          <div class="p-6 rounded-2xl bg-brand-850 border border-brand-800 hover:border-brand-cyan transition-all">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-brand-cyan/15 text-brand-cyan">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-white text-base">BI &amp; Visualization</h3>
+            </div>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Power BI Desktop &amp; Service</span>
+                <span class="font-mono text-brand-cyan">Expert</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Advanced DAX &amp; Data Modeling</span>
+                <span class="font-mono text-brand-cyan">Proficient</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Tableau Public &amp; Desktop</span>
+                <span class="font-mono text-brand-cyan">Interactive</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Power Query (M Language)</span>
+                <span class="font-mono text-brand-cyan">Automated ETL</span>
+              </li>
+              <li class="flex items-center justify-between py-1">
+                <span>Star &amp; Snowflake Schema</span>
+                <span class="font-mono text-brand-cyan">Relational</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 2: Data Analytics & SQL -->
+          <div class="p-6 rounded-2xl bg-brand-850 border border-brand-800 hover:border-brand-indigo transition-all">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-brand-indigo/15 text-brand-indigo">
+                <i data-lucide="database" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-white text-base">Data Analytics &amp; SQL</h3>
+            </div>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>SQL (PostgreSQL, MySQL, Server)</span>
+                <span class="font-mono text-brand-indigo">Advanced</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Python (Pandas, NumPy, Seaborn)</span>
+                <span class="font-mono text-brand-indigo">EDA / Cleaning</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Window Functions &amp; CTEs</span>
+                <span class="font-mono text-brand-indigo">Rank / Partition</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Advanced MS Excel (Power Pivot)</span>
+                <span class="font-mono text-brand-indigo">XLOOKUP / DAX</span>
+              </li>
+              <li class="flex items-center justify-between py-1">
+                <span>Statistical Modeling &amp; SPC</span>
+                <span class="font-mono text-brand-indigo">3σ &amp; Pareto</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 3: Plant Operations & SAP ERP -->
+          <div class="p-6 rounded-2xl bg-brand-850 border border-brand-800 hover:border-brand-emerald transition-all">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-brand-emerald/15 text-brand-emerald">
+                <i data-lucide="factory" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-white text-base">Operations &amp; ERP</h3>
+            </div>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>SAP PP (Production Planning)</span>
+                <span class="font-mono text-brand-emerald">Work Orders</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Material Requirements Planning (MRP)</span>
+                <span class="font-mono text-brand-emerald">Daily Balancing</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>WIP Aging Control</span>
+                <span class="font-mono text-brand-emerald">Zero Target</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Line Starvation Prevention</span>
+                <span class="font-mono text-brand-emerald">BOM Audits</span>
+              </li>
+              <li class="flex items-center justify-between py-1">
+                <span>Root Cause Analysis (5-Why, Ishikawa)</span>
+                <span class="font-mono text-brand-emerald">Continuous Imprv.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 4: Software & Embedded Systems -->
+          <div class="p-6 rounded-2xl bg-brand-850 border border-brand-800 hover:border-amber-400 transition-all">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-amber-400/15 text-amber-400">
+                <i data-lucide="code" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-white text-base">Software &amp; Embedded</h3>
+            </div>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>HTML5 / CSS3 / Tailwind CSS</span>
+                <span class="font-mono text-amber-400">Responsive UI</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>JavaScript (ES6+)</span>
+                <span class="font-mono text-amber-400">Async / DOM</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Java &amp; Android Studio SDK</span>
+                <span class="font-mono text-amber-400">Mobile Apps</span>
+              </li>
+              <li class="flex items-center justify-between py-1 border-b border-brand-800/60">
+                <span>Embedded C++ (Arduino IDE)</span>
+                <span class="font-mono text-amber-400">Sensors &amp; Timers</span>
+              </li>
+              <li class="flex items-center justify-between py-1">
+                <span>TensorFlow &amp; OpenCV</span>
+                <span class="font-mono text-amber-400">CNN Models</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE (DETAILED WITH EXACT CREDENTIALS & TECH SUPPORT DUTIES) -->
+    <section id="experience" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Field Execution</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">Professional Experience</h2>
+        <p class="text-slate-400 text-sm mt-2">Proven shop-floor execution combined with software, hardware troubleshooting, and analytics.</p>
+      </div>
+
+      <div class="relative border-l-2 border-brand-800 ml-4 md:ml-28 space-y-12">
+        
+        <!-- Experience 1: Jabil Circuit India (Manufacturing Line Leader + Tech Support) -->
+        <div class="relative pl-6 md:pl-10 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-cyan border-4 border-brand-950 group-hover:scale-125 transition-transform shadow-md shadow-brand-cyan"></div>
+          
+          <div class="p-6 sm:p-8 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-cyan/50 transition-all shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-brand-800 pb-4 mb-4">
+              <div>
+                <span class="px-2.5 py-0.5 text-[11px] font-mono rounded bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">Active Full-Time Leadership</span>
+                <h3 class="text-xl font-bold text-white mt-1">Manufacturing Line Leader</h3>
+                <p class="text-sm text-slate-300 font-medium flex items-center gap-1.5 mt-0.5">
+                  <i data-lucide="building" class="w-4 h-4 text-brand-cyan"></i> Jabil Circuit India &bull; Pune, Maharashtra
+                </p>
+              </div>
+              <div class="text-left sm:text-right">
+                <span class="inline-block px-3 py-1 text-xs font-mono rounded-full bg-brand-900 text-slate-300 border border-brand-700">
+                  Sept 2025 &mdash; Present
+                </span>
+                <p class="text-xs text-brand-emerald font-semibold mt-1">Assembly &amp; Technical Support Lead</p>
+              </div>
+            </div>
+
+            <!-- Professional Summary Statement -->
+            <div class="p-4 rounded-2xl bg-brand-950 border border-brand-800 mb-5 text-xs text-slate-300 leading-relaxed font-mono">
+              <strong class="text-white block font-sans text-sm mb-1">Core Responsibility:</strong>
+              "Experienced in assembly manufacturing operations, production scheduling, material planning, SAP PP, inventory control, WIP management, root cause analysis, and cross-functional coordination. Proven track record of improving operational efficiency and preventing production disruptions through proactive planning and analytics."
+            </div>
+
+            <!-- Detailed Execution Bullets (Operations & Technical Support) -->
+            <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan mt-1 flex-shrink-0"></i>
+                <div>
+                  <strong class="text-white">Assembly Operations &amp; Production Scheduling:</strong> Aligned daily BOM requirements with the Master Production Schedule (MPS), managed order routing in SAP PP, and tracked open POs to eliminate line starvation.
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan mt-1 flex-shrink-0"></i>
+                <div>
+                  <strong class="text-white">Industrial Hardware &amp; Printer Support:</strong> Resolved critical packaging and lot-label printing failures across shop-floor Zebra barcode label printers (ZT411/ZT420) — diagnosing port 9100 spooler hangs, ZPL data formatting errors, ribbon sensor calibration, and IP network connection drops.
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan mt-1 flex-shrink-0"></i>
+                <div>
+                  <strong class="text-white">Enterprise MES &amp; EPS Application Triage:</strong> Acted as front-line technical support for Manufacturing Execution System (MES) and Enterprise Planning System (EPS) terminal errors, investigating application session locks, database RFC timeout disconnects, and restoring operator workstations to meet strict shift SLAs.
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan mt-1 flex-shrink-0"></i>
+                <div>
+                  <strong class="text-white">WIP Reduction &amp; Root Cause Analysis (RCA):</strong> Built automated Excel and Power BI tracking models that reduced floor-pending &gt;30-day aged WIP inventory to zero, leading daily inter-shift handshake meetings with quality engineers.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2: Android Developer Trainee -->
+        <div class="relative pl-6 md:pl-10 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-indigo border-4 border-brand-950 group-hover:scale-125 transition-transform"></div>
+          
+          <div class="p-6 sm:p-8 rounded-3xl bg-brand-850 border border-brand-800 hover:border-brand-indigo/50 transition-all shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-brand-800 pb-4 mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">Android Developer Trainee</h3>
+                <p class="text-sm text-slate-300 font-medium flex items-center gap-1.5 mt-0.5">
+                  <i data-lucide="building" class="w-4 h-4 text-brand-indigo"></i> Ibase Electrosoft Pvt. Ltd. &bull; Pune
+                </p>
+              </div>
+              <div>
+                <span class="inline-block px-3 py-1 text-xs font-mono rounded-full bg-brand-900 text-slate-300 border border-brand-700">
+                  Dec 2024 &mdash; Jan 2025
+                </span>
+              </div>
+            </div>
+
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-brand-indigo mt-1 flex-shrink-0"></i>
+                <span>Streamlined mobile backend data workflows and executed rapid data validation protocols, <strong>boosting system response speed by 25%</strong>.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-brand-indigo mt-1 flex-shrink-0"></i>
+                <span>Built reliable offline SQLite caching and asynchronous background threads for error-free handheld barcode lookups.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 3: IoT Engineering Intern -->
+        <div class="relative pl-6 md:pl-10 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-400 border-4 border-brand-950 group-hover:scale-125 transition-transform"></div>
+          
+          <div class="p-6 sm:p-8 rounded-3xl bg-brand-850 border border-brand-800 hover:border-amber-400/50 transition-all shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-brand-800 pb-4 mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">IoT Engineering Intern</h3>
+                <p class="text-sm text-slate-300 font-medium flex items-center gap-1.5 mt-0.5">
+                  <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i> Enovate Skill &bull; Remote
+                </p>
+              </div>
+              <div>
+                <span class="inline-block px-3 py-1 text-xs font-mono rounded-full bg-brand-900 text-slate-300 border border-brand-700">
+                  Jul 2021 &mdash; Sept 2021
+                </span>
+              </div>
+            </div>
+
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0"></i>
+                <span>Simulated automated hardware control systems, tracked operational telemetry logs, and analyzed system throughput metrics.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0"></i>
+                <span>Built automated threshold alerts in C++ to isolate sensor drift and notify system technicians.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS -->
+    <section class="py-16 bg-brand-900/40 border-t border-brand-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Education Column -->
+          <div class="lg:col-span-7 space-y-5">
+            <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Academic Credentials</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Engineering Degrees</h2>
+
+            <div class="p-5 rounded-2xl bg-brand-850 border border-brand-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan">2022 – 2025</span>
+                <h4 class="text-base font-bold text-white mt-1">Bachelor of Engineering (B.E.) &bull; E&amp;TC</h4>
+                <p class="text-xs text-slate-300">SKNCOE &bull; Savitribai Phule Pune University (SPPU)</p>
+              </div>
+              <div class="text-left sm:text-right bg-brand-950 px-4 py-2 rounded-xl border border-brand-800">
+                <span class="text-[10px] text-slate-400 uppercase font-mono block">Graduated</span>
+                <span class="text-lg font-bold text-white">7.71 <span class="text-xs text-slate-400">CGPA</span></span>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-brand-850 border border-brand-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-brand-indigo/20 text-brand-indigo">2019 – 2022</span>
+                <h4 class="text-base font-bold text-white mt-1">Diploma in Electronics &amp; Communication</h4>
+                <p class="text-xs text-slate-300">Government Polytechnic, Khamgaon</p>
+              </div>
+              <div class="text-left sm:text-right bg-brand-950 px-4 py-2 rounded-xl border border-brand-800">
+                <span class="text-[10px] text-slate-400 uppercase font-mono block">Score</span>
+                <span class="text-lg font-bold text-white">83.14%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recognitions & Certifications -->
+          <div class="lg:col-span-5 space-y-4">
+            <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Certifications &amp; Honors</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Recognitions</h2>
+
+            <div class="p-4 rounded-xl bg-brand-850 border border-brand-800 flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-amber-400/15 text-amber-400 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-white">2nd Position &bull; Circuit Mania Technical Fest</h4>
+                <p class="text-[11px] text-slate-400">Hardware circuit simulation &amp; high-speed troubleshooting contest</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-brand-850 border border-brand-800 flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-brand-cyan/15 text-brand-cyan flex items-center justify-center flex-shrink-0">
+                <i data-lucide="database" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-white">Introduction to Big Data Analytics</h4>
+                <p class="text-[11px] text-slate-400">Foundations of large dataset extraction, schemas, and processing</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-brand-850 border border-brand-800 flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-brand-indigo/15 text-brand-indigo flex items-center justify-center flex-shrink-0">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-white">Programming &amp; Generative AI Certified</h4>
+                <p class="text-[11px] text-slate-400">Building automated scripting protocols and intelligent pipelines</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT / HIRE OM SECTION -->
+    <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="grid lg:grid-cols-12 gap-12">
+        
+        <!-- Contact Left Column -->
+        <div class="lg:col-span-5 space-y-6 text-left">
+          <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Get in Touch</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Ready for Impactful Roles</h2>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            I am actively interviewing for <strong class="text-white">Data Analyst</strong>, <strong class="text-white">Power BI &amp; Business Intelligence Specialist</strong>, and <strong class="text-white">Operations / Quality Analyst</strong> roles. Contact me directly or submit an interview invitation.
+          </p>
+
+          <div class="space-y-3.5 pt-2">
+            <div class="p-4 rounded-2xl bg-brand-850 border border-brand-800 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-brand-cyan/15 text-brand-cyan">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] text-slate-400 block font-mono">PRIMARY EMAIL</span>
+                  <span class="text-sm font-semibold text-white font-mono">ommane75@gmail.com</span>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('ommane75@gmail.com', 'Email')" class="p-2 rounded-lg bg-brand-800 hover:bg-brand-700 text-slate-300 transition-colors" title="Copy Email">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-brand-850 border border-brand-800 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-brand-emerald/15 text-brand-emerald">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] text-slate-400 block font-mono">PHONE &amp; WHATSAPP</span>
+                  <span class="text-sm font-semibold text-white font-mono">+91 7758802790</span>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('+917758802790', 'Phone')" class="p-2 rounded-lg bg-brand-800 hover:bg-brand-700 text-slate-300 transition-colors" title="Copy Phone">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <a href="https://linkedin.com/in/omgmane" target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-brand-850 border border-brand-800 flex items-center justify-between hover:border-brand-cyan/60 transition-all group">
+              <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-brand-indigo/15 text-brand-indigo">
+                  <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] text-slate-400 block font-mono">LINKEDIN NETWORK</span>
+                  <span class="text-sm font-semibold text-white">linkedin.com/in/omgmane</span>
+                </div>
+              </div>
+              <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-brand-cyan transition-colors"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Direct Inquiry Form -->
+        <div class="lg:col-span-7">
+          <div class="p-6 sm:p-8 rounded-3xl glass-panel border border-brand-800 shadow-2xl">
+            <h3 class="text-xl font-bold text-white mb-1">Direct Recruiter Dispatch Form</h3>
+            <p class="text-xs text-slate-400 mb-6">Submissions validate directly and trigger an instant contact dispatch.</p>
+
+            <form onsubmit="handleContactSubmit(event)" id="hire-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1" for="c-name">YOUR NAME / RECRUITER *</label>
+                  <input type="text" id="c-name" required placeholder="e.g. Ananya Sen" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-800 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan text-xs">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1" for="c-email">WORK EMAIL *</label>
+                  <input type="email" id="c-email" required placeholder="e.g. ananya@company.com" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-800 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan text-xs">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1" for="c-company">ORGANIZATION / COMPANY</label>
+                  <input type="text" id="c-company" placeholder="e.g. Deloitte, Infosys, Eaton, Cummins" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-800 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan text-xs">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1" for="c-role">ROLE VACANCY</label>
+                  <select id="c-role" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-800 text-white focus:outline-none focus:border-brand-cyan text-xs">
+                    <option value="BI Analyst">Power BI &amp; Business Intelligence Analyst</option>
+                    <option value="Data Analyst">Data Analyst / SQL &amp; Python Specialist</option>
+                    <option value="Operations Analyst">Operations &amp; Quality Analyst</option>
+                    <option value="Supply Chain Analyst">Supply Chain &amp; MRP Planner</option>
+                    <option value="General Screening">General Phone Screen / Exploration</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-slate-300 mb-1" for="c-message">ROLE DESCRIPTION OR MEETING INVITE *</label>
+                <textarea id="c-message" required rows="4" placeholder="Share role details, package range, location, and potential interview schedule..." class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-800 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan text-xs resize-none"></textarea>
+              </div>
+
+              <button type="submit" id="btn-submit-contact" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-indigo text-slate-950 font-bold hover:brightness-110 shadow-lg shadow-brand-cyan/25 transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Transmit Opportunity to Om</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-brand-950 border-t border-brand-800 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-brand-indigo to-brand-cyan flex items-center justify-center text-slate-950 font-black text-[10px]">
+          OM
+        </div>
+        <span>&copy; <span id="year-copy"></span> Om Gajanan Mane. Built for Data, Power BI &amp; Operations Roles.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <span>Pune, Maharashtra, India</span>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-brand-cyan flex items-center gap-1 transition-colors">
+          Top <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC MODAL (PROJECTS & BI DASHBOARDS) -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-brand-900 border border-brand-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-xl bg-brand-850 border border-brand-800">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="modal-body-container">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT ENGINE -->
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+    document.getElementById('year-copy').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-toggle-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Toast helper
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-message');
+      text.textContent = msg;
+      toast.classList.remove('translate-y-28', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-28', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3500);
+    }
+
+    // Clipboard copy helper using document.execCommand for safe iframe execution
+    function copyToClipboard(val, type) {
+      const el = document.createElement('textarea');
+      el.value = val;
+      document.body.appendChild(el);
+      el.select();
+      try {
+        document.execCommand('copy');
+        showToast(`${type} "${val}" copied to clipboard!`);
+      } catch (err) {
+        showToast(`Failed to copy to clipboard.`);
+      }
+      document.body.removeChild(el);
+    }
+
+    // Simulated Resume Download
+    function downloadResume() {
+      showToast('Opening verified LinkedIn profile for Om Gajanan Mane...');
+      setTimeout(() => {
+        window.open('https://linkedin.com/in/omgmane', '_blank');
+      }, 700);
+    }
+
+    // HERO PERSPECTIVE SWITCHER
+    const heroContent = {
+      bi_analyst: {
+        badge: "Power BI &amp; Business Intelligence Focus &bull; Immediate Hire",
+        title: `Transforming Complex Enterprise Data into <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-teal-300 to-brand-indigo">High-Impact BI Dashboards</span>.`,
+        intro: `
+          <p>Electronics &amp; Telecommunication graduate (<strong class="text-white">SPPU &bull; 7.71 CGPA</strong>) with plant-floor data leadership at a <span class="text-brand-cyan font-semibold">Tier-1 Electronics Manufacturing (EMS) Plant</span>.</p>
+          <p class="text-sm text-slate-400">Specialized in engineering <strong class="text-slate-200">Power BI dashboards</strong>, DAX modeling, SQL Star Schemas, and Statistical Process Control (SPC) engines that uncover hidden margin leaks, accelerate yield, and optimize floor operations.</p>
+        `
+      },
+      data_analyst: {
+        badge: "Data Analyst &amp; SQL/Python Pipeline Focus",
+        title: `Turning Raw Transactional Tables into <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald">Actionable Business Insights</span>.`,
+        intro: `
+          <p>Analytical specialist combining <strong class="text-white">advanced SQL querying</strong> (window functions, CTEs), Python Pandas data transformation, and machine learning architectures.</p>
+          <p class="text-sm text-slate-400">Experienced in developing customer RFM clustering, multi-regional revenue reconciliation models, and deep learning classification pipelines with &gt;92% precision.</p>
+        `
+      },
+      operations: {
+        badge: "Operations &amp; Quality Leadership &bull; Plant Proven",
+        title: `Optimizing <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-emerald via-teal-300 to-brand-cyan">Assembly Floor Continuity</span> &amp; Zero WIP Aging.`,
+        intro: `
+          <p>Manufacturing Line Leader with a <span class="text-brand-cyan font-semibold">Tier-1 Electronics Assembly Plant</span>, synchronizing daily BOM requirements with Master Production Schedules (MPS) and auditing SAP PP order integrity.</p>
+          <p class="text-sm text-slate-400">Pioneered floor analytics that eliminated pending &gt;30-day aged WIP inventory to zero, led inter-shift operational handshakes, and maintained 100% line starvation prevention.</p>
+        `
+      }
+    };
+
+    function setHeroPerspective(type) {
+      document.querySelectorAll('.hero-focus-pill').forEach(btn => {
+        btn.className = 'hero-focus-pill px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-xl hover:bg-brand-800 transition-all';
+      });
+
+      if (type === 'bi_analyst') document.getElementById('hero-btn-bi').className = 'hero-focus-pill px-3 py-1.5 text-xs font-semibold rounded-xl bg-brand-cyan text-slate-950 shadow-md transition-all';
+      if (type === 'data_analyst') document.getElementById('hero-btn-data').className = 'hero-focus-pill px-3 py-1.5 text-xs font-semibold rounded-xl bg-brand-cyan text-slate-950 shadow-md transition-all';
+      if (type === 'operations') document.getElementById('hero-btn-ops').className = 'hero-focus-pill px-3 py-1.5 text-xs font-semibold rounded-xl bg-brand-cyan text-slate-950 shadow-md transition-all';
+
+      const data = heroContent[type];
+      document.getElementById('hero-badge-text').innerHTML = data.badge;
+      document.getElementById('hero-main-title').innerHTML = data.title;
+      document.getElementById('hero-intro-text').innerHTML = data.intro;
+
+      showToast(`Switched profile focus: ${type.replace('_', ' ').toUpperCase()}`);
+    }
+
+    // Chart.js Analytics Studio Engine
+    let chartInstance = null;
+    let currentMode = 'defect';
+
+    const analyticsData = {
+      defect: {
+        badge: 'PostgreSQL / SPC Engine',
+        labels: ['Solder Bridge', 'Tombstone', 'Missing IC', 'Misalignment', 'Cold Solder', 'Solder Balls'],
+        datasets: [
+          {
+            label: 'Shift Defect Count (Units)',
+            data: [42, 26, 14, 11, 7, 4],
+            backgroundColor: [
+              'rgba(6, 182, 212, 0.8)',
+              'rgba(6, 182, 212, 0.65)',
+              'rgba(99, 102, 241, 0.65)',
+              'rgba(99, 102, 241, 0.5)',
+              'rgba(16, 185, 129, 0.5)',
+              'rgba(148, 163, 184, 0.4)'
+            ],
+            borderColor: '#06b6d4',
+            borderWidth: 1
+          }
+        ],
+        card1: ['SMT First Pass Yield', '98.62%', '+1.8% vs Shift Target'],
+        card2: ['Defect Outliers', '0 UCL Violations', 'Within 3σ Upper Limit'],
+        card3: ['Scrap Reduction', '18.2% Cut', '5-Why Feeder Optimization'],
+        card4: ['WIP Status (>30d)', '0 Units', 'Clean Inventory Health'],
+        snippet: `SELECT defect_type, COUNT(*) AS count,
+       ROUND(COUNT(*)*100.0/SUM(COUNT(*)) OVER(), 2) AS pareto_pct
+FROM smt_line_inspections
+WHERE shift_date = CURRENT_DATE
+GROUP BY defect_type
+ORDER BY count DESC;`,
+        explanation: 'Simulates electronics SMT line inspection results: isolates solder bridging, tombstoning, and component misalignments before finished PCB potting.'
+      },
+      sales: {
+        badge: 'SQL Star Schema / DAX',
+        labels: ['West Zone (Pune/Mum)', 'South Zone (Blr/Chn)', 'North Zone (Del/Ncr)', 'Central Zone', 'Export Hub'],
+        datasets: [
+          {
+            label: 'Actual Revenue (Index Scale)',
+            data: [142, 118, 95, 64, 82],
+            backgroundColor: 'rgba(59, 130, 246, 0.75)',
+            borderColor: '#3b82f6',
+            borderWidth: 1
+          },
+          {
+            label: 'Quota Baseline (Index Scale)',
+            data: [125, 110, 90, 60, 75],
+            backgroundColor: 'rgba(16, 185, 129, 0.4)',
+            borderColor: '#10b981',
+            borderWidth: 1
+          }
+        ],
+        card1: ['Sales Growth Index', '+14.2% YoY', 'Exceeding Baseline Targets'],
+        card2: ['Top Territory Margin', '28.4%', 'West Zone High Profitability'],
+        card3: ['Customer Churn Rate', '2.1%', 'Down from 6.8% via RFM Model'],
+        card4: ['Forecast Accuracy', '95.4%', 'Python Exponential Smoothing'],
+        snippet: `SELECT region, SUM(sale_val) AS gross_rev,
+       ROUND((SUM(sale_val) - SUM(cost_val))*100.0/SUM(sale_val), 2) AS margin_pct
+FROM distributor_sales
+GROUP BY region
+ORDER BY gross_rev DESC;`,
+        explanation: 'Evaluates distributor margins and territory sales quotas to isolate pricing leakages across multi-regional supply channels.'
+      },
+      oee: {
+        badge: 'OEE Telemetry / Time Studies',
+        labels: ['Line Availability', 'Line Performance', 'Quality Rate', 'Overall OEE Index'],
+        datasets: [
+          {
+            label: 'Current Shift Efficiency (%)',
+            data: [94.2, 91.5, 98.6, 85.0],
+            backgroundColor: [
+              'rgba(16, 185, 129, 0.75)',
+              'rgba(6, 182, 212, 0.75)',
+              'rgba(99, 102, 241, 0.75)',
+              'rgba(245, 158, 11, 0.8)'
+            ],
+            borderColor: '#1e293b',
+            borderWidth: 1
+          }
+        ],
+        card1: ['Total OEE Rating', '85.0%', 'Class-A Manufacturing Benchmark'],
+        card2: ['Planned Downtime', '18 Mins', 'Rapid Die/SMT Reel Changeover'],
+        card3: ['Line Micro-Stoppages', '< 4 Incidents', 'Root Cause Feeder Tuning'],
+        card4: ['On-Time Delivery', '99.4%', 'Strict MPS Adherence'],
+        snippet: `-- Overall Equipment Effectiveness Calculation
+SELECT line_id,
+       ROUND(availability * performance * quality * 100, 1) AS oee_pct
+FROM production_line_telemetry
+WHERE shift_date = CURRENT_DATE;`,
+        explanation: 'Tracks Overall Equipment Effectiveness (OEE = Availability × Performance × Quality) across electronics assembly workstations to eliminate micro-stoppages.'
+      }
+    };
+
+    function initInteractiveChart(mode) {
+      const ctx = document.getElementById('liveInteractiveChart').getContext('2d');
+      const cfg = analyticsData[mode];
+
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      chartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: cfg.labels,
+          datasets: cfg.datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: '#cbd5e1',
+                font: { family: 'Inter', size: 11 }
+              }
+            },
+            tooltip: {
+              backgroundColor: '#0c1220',
+              titleColor: '#fff',
+              bodyColor: '#94a3b8',
+              borderColor: '#334155',
+              borderWidth: 1
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: 'rgba(51, 65, 85, 0.3)' },
+              ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 10 } }
+            },
+            y: {
+              grid: { color: 'rgba(51, 65, 85, 0.3)' },
+              ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 10 } }
+            }
+          }
+        }
+      });
+
+      // Update metrics
+      document.getElementById('card-label-1').textContent = cfg.card1[0];
+      document.getElementById('card-val-1').textContent = cfg.card1[1];
+      document.getElementById('card-sub-1').textContent = cfg.card1[2];
+
+      document.getElementById('card-label-2').textContent = cfg.card2[0];
+      document.getElementById('card-val-2').textContent = cfg.card2[1];
+      document.getElementById('card-sub-2').textContent = cfg.card2[2];
+
+      document.getElementById('card-label-3').textContent = cfg.card3[0];
+      document.getElementById('card-val-3').textContent = cfg.card3[1];
+      document.getElementById('card-sub-3').textContent = cfg.card3[2];
+
+      document.getElementById('card-label-4').textContent = cfg.card4[0];
+      document.getElementById('card-val-4').textContent = cfg.card4[1];
+      document.getElementById('card-sub-4').textContent = cfg.card4[2];
+
+      document.getElementById('query-engine-badge').textContent = cfg.badge;
+      document.getElementById('code-snippet-box').textContent = cfg.snippet;
+      document.getElementById('interactive-explanation').textContent = cfg.explanation;
+    }
+
+    function switchAnalyticsMode(mode) {
+      currentMode = mode;
+      ['defect', 'sales', 'oee'].forEach(m => {
+        const btn = document.getElementById(`btn-mode-${m}`);
+        if (m === mode) {
+          btn.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-brand-cyan text-slate-950 transition-all';
+        } else {
+          btn.className = 'px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-300 hover:text-white transition-all';
+        }
+      });
+      initInteractiveChart(mode);
+      showToast(`Loaded ${mode.toUpperCase()} telemetry model`);
+    }
+
+    function handleSliderChange(val) {
+      document.getElementById('slider-val').textContent = `${Number(val).toLocaleString()} Records`;
+      if (chartInstance) {
+        chartInstance.data.datasets[0].data = chartInstance.data.datasets[0].data.map(v => Math.round(v * (0.95 + Math.random() * 0.1)));
+        chartInstance.update();
+      }
+    }
+
+    function triggerSimulationAnomaly() {
+      showToast('Injecting simulated defect shift spike...');
+      setTimeout(() => {
+        if (chartInstance && currentMode === 'defect') {
+          chartInstance.data.datasets[0].data[0] += 12; // spike solder bridge
+          chartInstance.update();
+          showToast('UCL spike detected! Auto RCA checklist dispatched.');
+        } else {
+          showToast('Simulation refreshed with new sample bounds.');
+        }
+      }, 500);
+    }
+
+    // BI DASHBOARDS MODAL EXPLORER
+    const biModals = {
+      'ops-bi': {
+        title: "Executive Operations & Supply Chain BI Dashboard",
+        platform: "Power BI Desktop & Service &bull; SAP PP Direct Integration",
+        kpis: [
+          { label: "Overall OEE", val: "87.4%", desc: "Class-A Manufacturing benchmark" },
+          { label: "OTIF Delivery", val: "96.8%", desc: "On-Time In-Full fulfillment" },
+          { label: ">30d WIP", val: "0 Units", desc: "Eliminated line starvation" }
+        ],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Business Objective & SCM Context</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-3">
+            In electronics manufacturing assembly, discrepancies between the Master Production Schedule (MPS) and component staging cause line starvation and ballooning Work-In-Progress (WIP). This Power BI dashboard provides plant leaders with real-time operational visibility.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Data Architecture & Star Schema</h4>
+          <div class="p-3.5 bg-brand-950 rounded-2xl border border-brand-800 font-mono text-xs space-y-2 mb-4">
+            <div><strong class="text-brand-cyan">Fact Table:</strong> Fact_ProductionOrders (OrderID, ShiftKey, LineKey, PlannedQty, ActualQty, ScrapQty, CompletionDate)</div>
+            <div><strong class="text-brand-emerald">Dimension Tables:</strong> Dim_BOM_Components, Dim_ShiftCalendar, Dim_WorkCenter_Lines</div>
+            <div><strong class="text-amber-400">DAX Measures:</strong> Line_Starvation_Risk = IF([Staged_Inventory] < [Daily_Run_Rate], "CRITICAL", "NORMAL")</div>
+          </div>
+          <h4 class="font-bold text-base text-white mb-2">Key Business Impact</h4>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
+            <li>Successfully brought pending >30-day aged WIP inventory down to exactly <strong>zero</strong>.</li>
+            <li>Identified feeder bottlenecks during inter-shift handshakes, shaving 14 minutes off daily line changeovers.</li>
+          </ul>
+        `
+      },
+      'sales-bi': {
+        title: "Multi-Channel Retail Sales & Customer Cohort BI Dashboard",
+        platform: "Power BI &bull; SQL Server &bull; Star Schema Data Model",
+        kpis: [
+          { label: "Gross Margin", val: "31.8%", desc: "+3.2% after rebate reconciliation" },
+          { label: "Distributor Churn", val: "2.1%", desc: "Down from 6.8% via RFM" },
+          { label: "YoY Revenue", val: "+14.2%", desc: "Outperforming annual quota" }
+        ],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Commercial Analytics Strategy</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-3">
+            Multi-tier electronics and retail component distributors suffered from hidden rebate margin leakage and lacked visibility into dealer order cycles. This dashboard equips commercial leaders with automated cohort insights.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Data Modeling & DAX Calculation Engine</h4>
+          <div class="p-3.5 bg-brand-950 rounded-2xl border border-brand-800 font-mono text-xs space-y-2 mb-4">
+            <div><strong class="text-brand-indigo">RFM Segmentation:</strong> Calculated Recency, Frequency, and Monetary scores dynamically via Power BI DAX.</div>
+            <div><strong class="text-brand-cyan">DAX Formula:</strong> Margin_% = DIVIDE([Net_Sales] - [COGS_Standard], [Net_Sales], 0)</div>
+            <div><strong class="text-teal-400">Drilldowns:</strong> Region (West, South, North) &rarr; Territory Hub &rarr; Top 20 Revenue Generating Dealers.</div>
+          </div>
+          <h4 class="font-bold text-base text-white mb-2">Commercial Insights Uncovered</h4>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
+            <li>Uncovered a 14% margin leakage in discretionary distributor freight allowances.</li>
+            <li>Enabled sales directors to re-engage 42 "At-Risk" wholesale accounts before contract expirations.</li>
+          </ul>
+        `
+      },
+      'quality-bi': {
+        title: "Quality Engineering & SPC Defect Analytics Dashboard",
+        platform: "Tableau Desktop &bull; Python Data Cleansing &bull; 3-Sigma SPC",
+        kpis: [
+          { label: "First Pass Yield", val: "98.6%", desc: "+1.8% shift compliance" },
+          { label: "Scrap Reduction", val: "-18.2%", desc: "Continuous improvement yield" },
+          { label: "Process Capability (Cpk)", val: "1.42%", desc: "High process repeatability" }
+        ],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Quality & Statistical Control Scope</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-3">
+            SMT printed circuit board assembly lines generate thousands of optical inspection telemetry records per shift. Without statistical control boundaries, quality inspectors only respond reactively to catastrophic failures.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Statistical Engineering & Tableau Visuals</h4>
+          <div class="p-3.5 bg-brand-950 rounded-2xl border border-brand-800 font-mono text-xs space-y-2 mb-4">
+            <div><strong class="text-brand-emerald">Pareto 80/20 Engine:</strong> Isolates top defect culprits: Solder Bridging (42%) and Tombstoning (26%).</div>
+            <div><strong class="text-brand-cyan">Dynamic Control Limits:</strong> Programmed upper control limit (UCL) and lower control limit (LCL) run charts in Python & Tableau.</div>
+            <div><strong class="text-amber-400">RCA Integration:</strong> Instant click-through linking outlier batches to 5-Why and Ishikawa fishbone action items.</div>
+          </div>
+          <h4 class="font-bold text-base text-white mb-2">Floor Results</h4>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
+            <li>Reduced SMT rework scrap by 18.2% through early detection of feeder tension drift.</li>
+            <li>Zero 3-sigma UCL violations across the last 30 operational production shifts.</li>
+          </ul>
+        `
+      }
+    };
+
+    function openBiModal(key) {
+      const data = biModals[key];
+      const container = document.getElementById('modal-body-container');
+
+      const kpiCards = data.kpis.map(k => `
+        <div class="p-3 rounded-2xl bg-brand-950 border border-brand-800 text-center">
+          <span class="text-[10px] font-mono text-slate-400 block">${k.label}</span>
+          <span class="text-lg font-black text-white font-mono">${k.val}</span>
+          <span class="text-[10px] text-brand-cyan block mt-0.5">${k.desc}</span>
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="mb-4">
+          <span class="text-xs font-mono text-brand-cyan uppercase tracking-wider">${data.platform}</span>
+          <h3 class="text-2xl font-bold text-white mt-1">${data.title}</h3>
+        </div>
+        <div class="grid grid-cols-3 gap-3 my-4">
+          ${kpiCards}
+        </div>
+        <div class="border-t border-brand-800 pt-4">
+          ${data.details}
+        </div>
+        <div class="mt-6 pt-4 border-t border-brand-800 flex justify-end">
+          <button onclick="closeModal()" class="px-5 py-2 text-xs font-bold rounded-xl bg-brand-800 hover:bg-brand-700 text-white transition-colors">
+            Close Dashboard View
+          </button>
+        </div>
+      `;
+
+      document.getElementById('project-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    // Project Modals for standard 6 projects
+    const projectModals = {
+      'blood-group': {
+        title: "Blood Group Identification Using Deep Learning",
+        category: "Deep Learning & Image Processing",
+        tools: ["Python", "TensorFlow/Keras", "OpenCV", "CNN Architecture", "NumPy"],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Problem Statement</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Traditional slide agglutination testing relies on manual laboratory inspection under microscopes. In emergency trauma blood transfusions, human misinterpretation of blood agglutination creates critical patient hazards.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Technical Implementation</h4>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4 bg-brand-950 p-4 rounded-2xl border border-brand-800 font-mono">
+            <li>1. Preprocessing: Converted RGB smear micrographs to grayscale, applied Gaussian filtering, and performed Otsu thresholding with OpenCV to isolate erythrocyte clumps.</li>
+            <li>2. Neural Architecture: 4-layer Sequential CNN with 32/64/128/256 feature filters, ReLU activation, MaxPooling2D, and 30% Dropout to prevent overfitting.</li>
+            <li>3. Classification Output: 8-class Softmax layer detecting A+, A-, B+, B-, AB+, AB-, O+, and O- with 92.4% test validation accuracy.</li>
+          </ul>
+        `
+      },
+      'sales-analytics': {
+        title: "End-to-End Sales Performance & Revenue Analytics",
+        category: "Business Intelligence & SQL Modeling",
+        tools: ["SQL (PostgreSQL)", "Power BI", "DAX Formulas", "Advanced Excel (XLOOKUP)"],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Business Problem</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            A mid-sized electronic component distributor experienced unaccounted revenue leakage and lacked visibility into customer churn cycles across West, South, and North India hubs.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Analytical Solution</h4>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4 bg-brand-950 p-4 rounded-2xl border border-brand-800 font-mono">
+            <li>1. Data Architecture: Cleaned raw transactions and modeled a Star Schema with dim_dealers, dim_parts, and fact_sales.</li>
+            <li>2. RFM Segmentation: Clustered accounts into Champions, Loyalists, At Risk, and Hibernating tiers.</li>
+            <li>3. Outcome: Identified 14% revenue leakage in distributor margins and built Power BI executive dashboards for weekly forecasting.</li>
+          </ul>
+        `
+      },
+      'defect-analytics': {
+        title: "Shop-Floor Defect Trend & Line Yield Analytics",
+        category: "Operations & Quality Analytics",
+        tools: ["Python", "SPC (Run Charts)", "Pareto 80/20", "SAP PP", "Root Cause Analysis (5-Why)"],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Shop-Floor SMT Bottleneck</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            SMT line component shortages and soldering anomalies caused intermittent line starvation, off-shift rework, and schedule slippage on high-density PCB lines.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Plant Floor Execution (Tier-1 Electronics Plant)</h4>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4 bg-brand-950 p-4 rounded-2xl border border-brand-800 font-mono">
+            <li>1. Statistical Process Control: Established 3-sigma Upper Control Limits (UCL) tracking hourly PPM defect rates.</li>
+            <li>2. 5-Why Investigation: Isolated feeder belt tension vibration as the primary root cause for IC tombstoning defects.</li>
+            <li>3. Measurable Result: Reduced rework scrap by 18.2% and brought pending >30-day aged floor WIP to zero.</li>
+          </ul>
+        `
+      },
+      'arduino-speed': {
+        title: "Smart Arduino Speed Monitoring & Telemetry Vehicle System",
+        category: "Embedded C++ & Hardware Prototyping",
+        tools: ["Embedded C++", "Arduino IDE", "Hall-Effect Sensor", "Ultrasonic Sensor", "OLED I2C"],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Project Vision</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Designed an autonomous speed detection and collision alert vehicle telemetry unit for internal plant transport carts and industrial logistics dollies.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Hardware Design</h4>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4 bg-brand-950 p-4 rounded-2xl border border-brand-800 font-mono">
+            <li>1. Interrupt-Driven Pulse Counting: Embedded A3144 Hall-Effect sensor triggering hardware ISRs for precision wheel RPM calculation.</li>
+            <li>2. Telemetry & Proximity: Ultrasonic sensor monitoring 1.5m buffer zones with buzzer alerts and OLED speedometer display.</li>
+            <li>3. Accuracy: Calibrated against optical tachometer with 99% measurement accuracy.</li>
+          </ul>
+        `
+      },
+      'shop-portal': {
+        title: "Multi-Vendor Local Shop Showcase & Discovery Portal",
+        category: "Frontend Web Application",
+        tools: ["HTML5", "Tailwind CSS", "JavaScript ES6+", "REST API Client", "JSON Store"],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Concept & Problem Solved</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Local neighborhood retail businesses (electronics repair, hardware stores, bakeries, clothing boutiques) often struggle with costly e-commerce platforms. This portal provides an ultra-lightweight, responsive showcase enabling merchants to publish store catalogs and receive orders directly via WhatsApp.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Frontend Architecture</h4>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4 bg-brand-950 p-4 rounded-2xl border border-brand-800 font-mono">
+            <li>1. Dynamic Shop Directory: Filter by categories (Electronics, Food, Hardware) with instant client-side search.</li>
+            <li>2. Digital Showcase Window: Product cards with pricing, stock status, ratings, and Google Maps location pins.</li>
+            <li>3. 1-Click WhatsApp Inquiry Engine: Encodes cart items into pre-formatted WhatsApp chat links directly connecting buyer and shopkeeper.</li>
+          </ul>
+        `
+      },
+      'campus-app': {
+        title: "Smart Campus Notes & Task Organizer App",
+        category: "Native Android Mobile App",
+        tools: ["Java", "Android Studio SDK", "SQLite Database", "XML Layouts", "AlarmManager"],
+        details: `
+          <h4 class="font-bold text-base text-white mb-2">Practical Utility</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            A streamlined Android study assistant built for engineering students to eliminate cluttered paper notebooks and missed assignment deadlines.
+          </p>
+          <h4 class="font-bold text-base text-white mb-2">Application Features</h4>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4 bg-brand-950 p-4 rounded-2xl border border-brand-800 font-mono">
+            <li>1. Offline SQLite Persistence: Fast local CRUD operations for class notes, subject tags, and lecture attachments with zero data usage.</li>
+            <li>2. Exam Timetable & Task Alarm: Integrated Android AlarmManager to trigger scheduled local push notifications for submission deadlines.</li>
+            <li>3. Quick Search & Export: Search notes by keyword in milliseconds with options to export notes into clean PDF summaries.</li>
+          </ul>
+        `
+      }
+    };
+
+    function openModal(key) {
+      const data = projectModals[key];
+      const container = document.getElementById('modal-body-container');
+      
+      const toolsHtml = data.tools.map(t => 
+        `<span class="px-2 py-0.5 rounded bg-brand-950 border border-brand-800 text-brand-cyan text-[11px] font-mono">${t}</span>`
+      ).join(' ');
+
+      container.innerHTML = `
+        <div class="mb-4">
+          <span class="text-xs font-mono text-brand-cyan uppercase tracking-wider">${data.category}</span>
+          <h3 class="text-2xl font-bold text-white mt-1">${data.title}</h3>
+          <div class="flex flex-wrap gap-1.5 mt-3">${toolsHtml}</div>
+        </div>
+        <div class="border-t border-brand-800 pt-4">
+          ${data.details}
+        </div>
+        <div class="mt-6 pt-4 border-t border-brand-800 flex justify-end">
+          <button onclick="closeModal()" class="px-5 py-2 text-xs font-bold rounded-xl bg-brand-800 hover:bg-brand-700 text-white transition-colors">
+            Close Deep Dive
+          </button>
+        </div>
+      `;
+
+      document.getElementById('project-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('project-modal').classList.add('hidden');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Form submission simulation
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btn-submit-contact');
+      const name = document.getElementById('c-name').value;
+      const role = document.getElementById('c-role').value;
+
+      btn.disabled = true;
+      btn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-slate-950 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Transmitting to Om...
+      `;
+
+      setTimeout(() => {
+        showToast(`Thank you, ${name}! Opportunity inquiry for "${role}" transmitted successfully.`);
+        document.getElementById('hire-form').reset();
+        btn.disabled = false;
+        btn.innerHTML = `
+          <i data-lucide="check" class="w-4 h-4"></i>
+          <span>Opportunity Transmitted!</span>
+        `;
+        lucide.createIcons();
+      }, 900);
+    }
+
+    // Window load init
+    window.onload = function() {
+      initInteractiveChart('defect');
+    };
+  </script>
+</body>
+</html>
